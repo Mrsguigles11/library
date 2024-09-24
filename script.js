@@ -30,12 +30,15 @@ function addBookToTable (book) {
      }
 
 
-
 submitButton.addEventListener('click', () => {
     const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readInput.value);
     addBookToLibrary(newBook); 
     addBookToTable(newBook);
+    bookNameInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.value = "";
 })
 
-console.log(myLibrary);
+
 
