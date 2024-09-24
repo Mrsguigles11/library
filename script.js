@@ -19,25 +19,23 @@ function addBookToLibrary (book) {
     myLibrary.push(book);
 }
 
-function addBooksToTable () {
-    for (const book of myLibrary) {
-        let row = document.createElement("tr");
-        table.appendChild(row);
-        for (const key in book) {
+function addBookToTable (book) {
+    let row = document.createElement("tr");
+    table.appendChild(row);
+    for (const key in book) {
             let dataCell = document.createElement("td");
             row.appendChild(dataCell);
             dataCell.textContent = `${book[key]}`;
         }
-    } }
-    
-
-const theHobbit = new Book("The Hobbit", "J.R.R Tolkein", "395", "No");
-const pathOfDestruction = new Book("Path of Destruction", "Drew Karpyshyn", "450", "Yes");
-
-addBookToLibrary(theHobbit);
-addBookToLibrary(pathOfDestruction);
+     }
 
 
 
-addBooksToTable();
+submitButton.addEventListener('click', () => {
+    const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readInput.value);
+    addBookToLibrary(newBook); 
+    addBookToTable(newBook);
+})
+
+console.log(myLibrary);
 
