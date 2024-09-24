@@ -4,7 +4,8 @@ const submitButton = document.querySelector(".submit_button");
 const bookNameInput = document.querySelector("#book_name")
 const authorInput = document.querySelector("#author");
 const pagesInput = document.querySelector("#pages");
-const readInput = document.querySelector("#read");
+const readYesOption = document.querySelector("#yes");
+const readNoOption = document.querySelector("#no");
 
 let myLibrary = [];
 
@@ -31,13 +32,23 @@ function addBookToTable (book) {
 
 
 submitButton.addEventListener('click', () => {
-    const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readInput.value);
+    
+    let readValue = "";
+    if (readYesOption.checked === true) {
+        readValue = "Yes";
+    }
+    else {
+        readValue = "No";
+    }
+
+    const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readValue);
     addBookToLibrary(newBook); 
     addBookToTable(newBook);
     bookNameInput.value = "";
     authorInput.value = "";
     pagesInput.value = "";
-    readInput.value = "";
+    readYesOption.checked = true;
+    readNoOption.checked = false;
 })
 
 

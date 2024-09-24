@@ -35,8 +35,13 @@
         <input type="text" id="author"></input>
         <label for="pages">No of Pages</label>
         <input type="text" id="pages"></input>
-        <label for="read">Read?</label>
-        <input type="text" id="read"></input>
+        <fieldset>
+            <legend>Read?</legend>
+                <input type="radio" id="yes" name="read" value="yes" checked>
+                <label for="yes">Yes</label>
+                <input type="radio" id="no" name="read" value="no">
+                <label for="no">No</label>
+        </fieldset>
     </form>
     <button class="submit_button">Submit</button>
 </body>

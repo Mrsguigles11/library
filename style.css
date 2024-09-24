@@ -22,3 +22,7 @@ form {
     flex-direction: column;
     width: 20vw;
 }
+
+fieldset {
+    border: none;
+}
