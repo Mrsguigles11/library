@@ -28,11 +28,15 @@ function addBookToTable (book) {
             row.appendChild(dataCell);
             dataCell.textContent = `${book[key]}`;
         }
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.setAttribute("class", "delete_button");
+    deleteButton.onclick = function () { row.remove()};
+    row.appendChild(deleteButton);
      }
 
 
 submitButton.addEventListener('click', () => {
-    
     let readValue = "";
     if (readYesOption.checked === true) {
         readValue = "Yes";
