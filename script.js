@@ -54,15 +54,18 @@ function addBookToTable (book) {
             row.appendChild(dataCell);
             dataCell.textContent = `${book[key]}`; }
         }
-    let deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
+    let dataCell = document.createElement("td");
+    dataCell.setAttribute("class", "delete_td");
+    row.appendChild(dataCell);
+    let deleteButton = document.createElement("img");
+    
+    deleteButton.setAttribute("src", "./img/delete.svg");
     deleteButton.setAttribute("class", "delete_button");
     deleteButton.onclick = function () { 
         row.remove();
         removeBookFromLibrary(book.index);};
-    row.appendChild(deleteButton);
+    dataCell.appendChild(deleteButton);
      }
-
 
 submitButton.addEventListener('click', () => {
     let readValue = "";
