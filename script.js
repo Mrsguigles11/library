@@ -17,6 +17,16 @@ function Book(title, author, pages, read, index) {
     this.index = index;
 }
 
+Book.prototype.toggleRead = function (book) {
+    if (book.read === "Yes") {
+        book.read = "No";
+    }
+    else {
+        book.read = "Yes";
+    }
+    console.log(myLibrary);
+}
+
 function addBookToLibrary (book) {
     myLibrary.push(book);
 }
@@ -29,7 +39,17 @@ function addBookToTable (book) {
     let row = document.createElement("tr");
     table.appendChild(row);
     for (const key in book) {
-            if (key !== "index") {
+        if (key === "read") {
+            let dataCell = document.createElement("td");
+            row.appendChild(dataCell);
+            dataCell.textContent = `${book[key]}`;
+            let toggleButton = document.createElement("button");
+            toggleButton.textContent = "Toggle";
+            dataCell.appendChild(toggleButton);
+            toggleButton.onclick = function () {
+                book.toggleRead(book); }
+            }
+        else if ((key !== "index") && (key !== "toggleRead")) {
             let dataCell = document.createElement("td");
             row.appendChild(dataCell);
             dataCell.textContent = `${book[key]}`; }
