@@ -12,7 +12,6 @@
 }
 
 body {
-    padding: 20px;
     width: 100%;
     min-height: 100vh;
     background-color: #0c0a09; 
@@ -26,15 +25,30 @@ table {
     border: none;
     color: white;
     width: 50vw;
+    margin-top: 10px;
 }
 
 h1 {
     color: white;
-    margin-bottom: 10px;
+}
+
+.header_container {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.header_container > img {
+    height: auto;
+    filter: brightness(0) invert(1);
+    width: 30px;
+    padding-top: 5px;
+    
 }
 
 th, td {
     border: 1px solid white;
+    padding: 3px;
 }
 
 form {
@@ -54,11 +68,20 @@ fieldset {
 .radio_container, .radio_options_container {
     display: flex;
     column-gap: 10px;
+    align-items: center;
+    height: 100%;
+}
+
+.radio_options_container > div {
+    display: flex;
+    align-items: center;
+    column-gap: 5px
 }
 
 .input_container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     column-gap: 10px;
 }
@@ -79,16 +102,30 @@ input {
     cursor: pointer;
 }
 
-.delete_button {
-    width: 20px;
-    height: 20px;
+.delete_button, .toggle_button {
     filter: brightness(0) invert(1);
     cursor: pointer;
 }
 
-.delete_td {
-    border: none;
+.delete_button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 110%;
+}
+
+.toggle_button {
+    width: 18px;
+    height: 18px;
+}
+
+.read_td {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+tr {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr;
 }

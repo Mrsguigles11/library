@@ -41,30 +41,36 @@ function addBookToTable (book) {
     for (const key in book) {
         if (key === "read") {
             let dataCell = document.createElement("td");
+            dataCell.setAttribute("class", "read_td");
             row.appendChild(dataCell);
             dataCell.textContent = `${book[key]}`;
-            let toggleButton = document.createElement("button");
-            toggleButton.textContent = "Toggle";
+            let toggleButton = document.createElement("img");
+            toggleButton.setAttribute("src", "./img/swap-horizontal.svg");
+            toggleButton.setAttribute("class", "toggle_button");
             dataCell.appendChild(toggleButton);
             toggleButton.onclick = function () {
                 book.toggleRead(book); }
+            let deleteButton = document.createElement("img");
+            deleteButton.setAttribute("src", "./img/delete.svg");
+            deleteButton.setAttribute("class", "delete_button");
+            deleteButton.onclick = function () { 
+                row.remove();
+                removeBookFromLibrary(book.index);};
+            dataCell.appendChild(deleteButton);
             }
         else if ((key !== "index") && (key !== "toggleRead")) {
             let dataCell = document.createElement("td");
             row.appendChild(dataCell);
             dataCell.textContent = `${book[key]}`; }
         }
-    let dataCell = document.createElement("td");
-    dataCell.setAttribute("class", "delete_td");
-    row.appendChild(dataCell);
-    let deleteButton = document.createElement("img");
     
+    let deleteButton = document.createElement("img");
     deleteButton.setAttribute("src", "./img/delete.svg");
     deleteButton.setAttribute("class", "delete_button");
     deleteButton.onclick = function () { 
         row.remove();
         removeBookFromLibrary(book.index);};
-    dataCell.appendChild(deleteButton);
+    readTd.appendChild(deleteButton);
      }
 
 submitButton.addEventListener('click', () => {
