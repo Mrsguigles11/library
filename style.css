@@ -4,25 +4,62 @@
     margin: 0;
 }
 
+:root {
+    font-size: 16px;
+}
+
 body {
     padding: 20px;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: black; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 table {
-    border: 2px solid black;
+    border: 2px solid white;
+    color: white;
+    width: 50vw;
+}
+
+h1 {
+    color: white;
 }
 
 th, td {
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 form {
     margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 50vw;
+    color: white;
+    font-size: 0.8rem;
 }
 
 fieldset {
     border: none;
+}
+
+.radio_container {
+    display: flex;
+    column-gap: 10px;
+}
+
+.input_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+input {
+    flex-grow: 1;
+    min-width: 10px;
 }
