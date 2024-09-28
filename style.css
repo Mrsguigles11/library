@@ -54,8 +54,8 @@ th, td {
 form {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 10px;
+    grid-template-columns: 1fr 1fr 1fr 0.5fr;
+    column-gap: 20px;
     width: 50vw;
     color: white;
     font-size: 0.8rem;
@@ -84,13 +84,7 @@ fieldset {
 
 .input_container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
-}
-
-.author_container {
-    display: flex;
-    justify-content: space-between;
+    grid-template-columns: 1fr 4fr;
     align-items: center;
     column-gap: 10px;
 }
@@ -98,6 +92,8 @@ fieldset {
 input {
     flex-grow: 1;
     min-width: 10px;
+    border-radius: 5px;
+    border: none;
 }
 
 .submit_button {
@@ -116,6 +112,12 @@ input {
     cursor: pointer;
 }
 
+.read_td {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
 .delete_button {
     width: 20px;
     height: 20px;
@@ -128,11 +130,6 @@ input {
     height: 18px;
 }
 
-.read_td {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
 
 tr {
     display: grid;

@@ -17,14 +17,13 @@ function Book(title, author, pages, read, index) {
     this.index = index;
 }
 
-Book.prototype.toggleRead = function (book) {
-    if (book.read === "Yes") {
-        book.read = "No";
+Book.prototype.toggleRead = function () {
+    if (this.read === "Yes") {
+        this.read = "No";
     }
     else {
-        book.read = "Yes";
+        this.read = "Yes";
     }
-    console.log(myLibrary);
 }
 
 function addBookToLibrary (book) {
@@ -38,39 +37,34 @@ function removeBookFromLibrary (index) {
 function addBookToTable (book) {
     let row = document.createElement("tr");
     table.appendChild(row);
-    for (const key in book) {
-        if (key === "read") {
-            let dataCell = document.createElement("td");
-            dataCell.setAttribute("class", "read_td");
-            row.appendChild(dataCell);
-            dataCell.textContent = `${book[key]}`;
-            let toggleButton = document.createElement("img");
-            toggleButton.setAttribute("src", "./img/swap-horizontal.svg");
-            toggleButton.setAttribute("class", "toggle_button");
-            dataCell.appendChild(toggleButton);
-            toggleButton.onclick = function () {
-                book.toggleRead(book); }
-            let deleteButton = document.createElement("img");
-            deleteButton.setAttribute("src", "./img/delete.svg");
-            deleteButton.setAttribute("class", "delete_button");
-            deleteButton.onclick = function () { 
-                row.remove();
-                removeBookFromLibrary(book.index);};
-            dataCell.appendChild(deleteButton);
-            }
-        else if ((key !== "index") && (key !== "toggleRead")) {
-            let dataCell = document.createElement("td");
-            row.appendChild(dataCell);
-            dataCell.textContent = `${book[key]}`; }
-        }
-    
     let deleteButton = document.createElement("img");
     deleteButton.setAttribute("src", "./img/delete.svg");
     deleteButton.setAttribute("class", "delete_button");
     deleteButton.onclick = function () { 
         row.remove();
         removeBookFromLibrary(book.index);};
-    readTd.appendChild(deleteButton);
+    let toggleButton = document.createElement("img");
+    toggleButton.setAttribute("src", "./img/swap-horizontal.svg");
+    toggleButton.setAttribute("class", "toggle_button");
+    for (const key in book) {
+        if (key === "read") {
+            let dataCell = document.createElement("td");
+            dataCell.setAttribute("class", "read_td");
+            row.appendChild(dataCell);
+            dataCell.textContent = `${book[key]}`;
+            dataCell.appendChild(toggleButton);
+            dataCell.appendChild(deleteButton);
+            toggleButton.onclick = function () { 
+                book.toggleRead();
+                dataCell.textContent = `${book[key]}`;
+                dataCell.appendChild(toggleButton);
+                dataCell.appendChild(deleteButton);};
+            }
+        else if ((key !== "index") && (key !== "toggleRead")) {
+            let dataCell = document.createElement("td");
+            row.appendChild(dataCell);
+            dataCell.textContent = `${book[key]}`; }
+        }
      }
 
 submitButton.addEventListener('click', () => {
@@ -91,6 +85,5 @@ submitButton.addEventListener('click', () => {
     readYesOption.checked = true;
     readNoOption.checked = false;
 })
-
 
 
