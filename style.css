@@ -42,7 +42,7 @@ h1 {
     height: auto;
     filter: brightness(0) invert(1);
     width: 30px;
-    padding-top: 5px;
+    padding-top: 3px;
     
 }
 
@@ -106,6 +106,10 @@ input {
     font-family: 'Roboto';
     border-radius: 10px;
     cursor: pointer;
+}
+
+.submit_button:hover {
+    background-color: #57534e;
 }
 
 .delete_button, .toggle_button {
