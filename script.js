@@ -9,22 +9,26 @@ const readNoOption = document.querySelector("#no");
 
 let myLibrary = [];
 
-function Book(title, author, pages, read, index) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.index = index;
+class Book {
+
+    constructor(title, author, pages, read, index) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.index = index;
+    }
+
+    toggleRead() {
+        if (this.read === "Yes") {
+            this.read = "No";
+        }
+        else {
+            this.read = "Yes";
+        }
+    }
 }
 
-Book.prototype.toggleRead = function () {
-    if (this.read === "Yes") {
-        this.read = "No";
-    }
-    else {
-        this.read = "Yes";
-    }
-}
 
 function addBookToLibrary (book) {
     myLibrary.push(book);
