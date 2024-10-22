@@ -7,16 +7,16 @@ const pagesInput = document.querySelector("#pages");
 const readYesOption = document.querySelector("#yes");
 const readNoOption = document.querySelector("#no");
 
-let myLibrary = [];
-
 class Book {
 
-    constructor(title, author, pages, read, index) {
+    #myLibrary = [];
+
+    constructor(title, author, pages, read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
-        this.index = index;
+        this.index = this.#myLibrary.length;
     }
 
     toggleRead() {
@@ -29,11 +29,11 @@ class Book {
     }
 
     addBookToLibrary() {
-        myLibrary.push(this);
+        this.#myLibrary.push(this);
     }
 
     removeBookFromLibrary () {
-        myLibrary.splice(this.index, 1);
+        this.#myLibrary.splice(this.index, 1);
     }
 }
 
@@ -64,7 +64,7 @@ function addBookToTable (book) {
                 dataCell.appendChild(toggleButton);
                 dataCell.appendChild(deleteButton);};
             }
-        else if ((key !== "index") && (key !== "toggleRead")) {
+        else if (key !== "index") {
             let dataCell = document.createElement("td");
             row.appendChild(dataCell);
             dataCell.textContent = `${book[key]}`; }
@@ -80,7 +80,7 @@ submitButton.addEventListener('click', () => {
         readValue = "No";
     }
 
-    const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readValue, myLibrary.length);
+    const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readValue);
     newBook.addBookToLibrary(); 
     addBookToTable(newBook);
     bookNameInput.value = "";
