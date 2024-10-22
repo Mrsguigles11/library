@@ -9,14 +9,11 @@ const readNoOption = document.querySelector("#no");
 
 class Book {
 
-    #myLibrary = [];
-
     constructor(title, author, pages, read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
-        this.index = this.#myLibrary.length;
     }
 
     toggleRead() {
@@ -26,14 +23,6 @@ class Book {
         else {
             this.read = "Yes";
         }
-    }
-
-    addBookToLibrary() {
-        this.#myLibrary.push(this);
-    }
-
-    removeBookFromLibrary () {
-        this.#myLibrary.splice(this.index, 1);
     }
 }
 
@@ -45,8 +34,7 @@ function addBookToTable (book) {
     deleteButton.setAttribute("src", "./img/delete.svg");
     deleteButton.setAttribute("class", "delete_button");
     deleteButton.onclick = function () { 
-        row.remove();
-        book.removeBookFromLibrary();};
+        row.remove();};
     let toggleButton = document.createElement("img");
     toggleButton.setAttribute("src", "./img/swap-horizontal.svg");
     toggleButton.setAttribute("class", "toggle_button");
@@ -80,8 +68,7 @@ submitButton.addEventListener('click', () => {
         readValue = "No";
     }
 
-    const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readValue);
-    newBook.addBookToLibrary(); 
+    const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readValue); 
     addBookToTable(newBook);
     bookNameInput.value = "";
     authorInput.value = "";
