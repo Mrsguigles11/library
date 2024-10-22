@@ -27,16 +27,16 @@ class Book {
             this.read = "Yes";
         }
     }
+
+    addBookToLibrary() {
+        myLibrary.push(this);
+    }
+
+    removeBookFromLibrary () {
+        myLibrary.splice(this.index, 1);
+    }
 }
 
-
-function addBookToLibrary (book) {
-    myLibrary.push(book);
-}
-
-function removeBookFromLibrary (index) {
-    myLibrary.splice(index, 1);
-}
 
 function addBookToTable (book) {
     let row = document.createElement("tr");
@@ -46,7 +46,7 @@ function addBookToTable (book) {
     deleteButton.setAttribute("class", "delete_button");
     deleteButton.onclick = function () { 
         row.remove();
-        removeBookFromLibrary(book.index);};
+        book.removeBookFromLibrary();};
     let toggleButton = document.createElement("img");
     toggleButton.setAttribute("src", "./img/swap-horizontal.svg");
     toggleButton.setAttribute("class", "toggle_button");
@@ -81,7 +81,7 @@ submitButton.addEventListener('click', () => {
     }
 
     const newBook = new Book(bookNameInput.value, authorInput.value, pagesInput.value, readValue, myLibrary.length);
-    addBookToLibrary(newBook); 
+    newBook.addBookToLibrary(); 
     addBookToTable(newBook);
     bookNameInput.value = "";
     authorInput.value = "";
