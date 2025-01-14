@@ -36,15 +36,15 @@
 
         <div class="input_container">
             <label for="book_name">Name</label>
-            <input type="text" id="book_name" size="1"></input>
+            <input type="text" id="book_name" size="1" required></input>
         </div>
         <div class="input_container">
             <label for="author">Author</label>
-            <input type="text" id="author" size="1"></input>
+            <input type="text" id="author" size="1" required></input>
         </div>
         <div class="input_container">
             <label for="pages">Pages</label>
-            <input type="text" id="pages" size="1"></input>
+            <input type="number" id="pages" size="1" required min="10"></input>
         </div>
         <fieldset>
             <div class="radio_container">
@@ -61,8 +61,8 @@
                     </div>
             </div>
         </fieldset>
+    <button class="submit_button" type="submit">Add Book</button>
     </form>
-    <button class="submit_button">Add Book</button>
 </body>
 </html>
 

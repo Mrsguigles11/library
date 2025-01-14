@@ -53,10 +53,10 @@ th, td {
 
 form {
     margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template: repeat(2, auto) / repeat(4, auto);
     flex-wrap: wrap;
-    row-gap: 10px;
+    gap: 10px;
     width: 40vw;
     color: white;
     font-size: 0.8rem;
@@ -106,6 +106,8 @@ input {
     font-family: 'Roboto';
     border-radius: 10px;
     cursor: pointer;
+    justify-self: center;
+    grid-column: 1 / span 4;
 }
 
 .submit_button:hover {

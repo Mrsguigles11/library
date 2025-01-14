@@ -59,7 +59,39 @@ function addBookToTable (book) {
         }
      }
 
-submitButton.addEventListener('click', () => {
+
+submitButton.addEventListener('click', (event) => {
+
+    if (bookNameInput.validity.valueMissing) {
+        bookNameInput.setCustomValidity("Please enter a book title!");
+        return
+    }
+    else {
+        bookNameInput.setCustomValidity("");
+        }
+
+
+    if (authorInput.validity.valueMissing) {
+        authorInput.setCustomValidity("Please enter an author!");
+        return
+    }
+    else {
+        authorInput.setCustomValidity("");
+        }
+        
+    
+    if (pagesInput.validity.valueMissing) {
+        pagesInput.setCustomValidity("Please enter a number!")
+        return
+    }
+    else if (pagesInput.validity.rangeUnderflow) {
+        pagesInput.setCustomValidity("Must be more than 10 pages!")
+        return
+    }
+    else {
+        pagesInput.setCustomValidity("");
+        }
+
     let readValue = "";
     if (readYesOption.checked === true) {
         readValue = "Yes";
@@ -76,5 +108,3 @@ submitButton.addEventListener('click', () => {
     readYesOption.checked = true;
     readNoOption.checked = false;
 })
-
-
